@@ -1,0 +1,6 @@
+node_modules
+client/node_modules
+server/venv
+server/__pycache__
+server/.env
+.DS_Store
