@@ -1,1 +1,20 @@
+@import url('http://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --color-anime-bg: #221A29;
+    --color-anime-orange: #FF793D;
+    --color-anime-gold: #FCB85C;
+    --color-anime-peach: #F9C9B3;
+    --color-anime-card: #32204A;
+    --color-anime-darken: #16101C;
+    --color-anime-accent: #D04D48;
+
+    --font-display: "Space Grotesk", sans-serif;
+}
+
+body {
+    background-color: var(--color-anime-bg);
+    color: var(--color-anime-peach);
+    font-family: var(--font-display);
+}
