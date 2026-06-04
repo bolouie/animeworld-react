@@ -20,7 +20,7 @@ function Navbar() {
 
                 {/* Hamburger - hidden desktop */}
                 <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Toggle menu"
                     aria-expanded={isMenuOpen}
                     className="md:hidden text-anime-peach">
