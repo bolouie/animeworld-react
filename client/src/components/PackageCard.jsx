@@ -1,7 +1,7 @@
 function PackageCard({ name, description, regularPrice, salePrice, availableStock, image }) {
     return (
         <article className="h-full outline outline-1 outline-anime-orange flex
-                         flex-col p-4 rounded-lg">
+                         flex-col p-4 rounded-lg bg-sword-blue/30">
             <img src={image} alt={name} className="w-full h-60 object-cover" />
             <h3 className="mt-4 text-lg font-semibold text-center text-anime-gold">{name}</h3>
             <p className="mt-2 mb-2 text-sm text-center text-white/90">

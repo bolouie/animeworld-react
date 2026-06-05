@@ -88,7 +88,8 @@ function Packages() {
                 ))}
             </ul>
             {/* Show more button */}
-            <button onClick={() => setShowAll(!showAll)}>
+            <button className="mt-4 px-4 py-2 border border-anime-peach/20 hover:border-anime-gold/40 hover:bg-anime-card/75 text-anime-peach hover:text-white rounded-full text-sm transition-all duration-200 flex items-center cursor-pointer"
+                onClick={() => setShowAll(!showAll)}>
                 {showAll ? 'Show Less' : 'Show More'}
             </button>
         </section >
