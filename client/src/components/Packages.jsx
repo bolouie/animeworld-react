@@ -14,6 +14,7 @@ const packages = [
         salePrice: 18,
         availableStock: 40,
         image: packageImageStarter,
+        featured: false,
     },
     {
         id: 2,
@@ -23,6 +24,7 @@ const packages = [
         salePrice: 28,
         availableStock: 30,
         image: packageImageClassic,
+        featured: false,
     },
     {
         id: 3,
@@ -32,6 +34,7 @@ const packages = [
         salePrice: 45,
         availableStock: 15,
         image: packageImageDeluxe,
+        featured: false,
     },
     {
         id: 4,
@@ -41,6 +44,7 @@ const packages = [
         salePrice: 60,
         availableStock: 10,
         image: packageImageAnniversary,
+        featured: true,
     },
     {
         id: 5,
@@ -50,10 +54,17 @@ const packages = [
         salePrice: 15,
         availableStock: 50,
         image: packageImageMystery,
+        featured: false,
     }
 ]
 
 function Packages() {
+    const [showAll, setShowAll] = useState(false);
+
+    const featuredPackages = packages.filter(pkg => pkg.featured);
+    const remainingPackages = packages.filter(pkg => !pkg.featured);
+    const displayPackages = showAll ? packages : [...remainingPackages.slice(0, 2), ...featuredPackages];
+
     return (
         <section aria-labelledby="featured-packages" className="max-w-6xl mx-auto px-4 py-12">
             <h2 id="featured-packages" className="text-3xl font-bold text-center mb-8">
@@ -61,8 +72,8 @@ function Packages() {
             </h2>
             {/* Grid layout for all packages */}
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Card structure for single package */}
-                {packages.map((pkg) => (
+                {/* show all packages or just the first three */}
+                {displayPackages.map(pkg => (
                     <li key={pkg.id}>
                         <article className="h-full outline outline-1 outline-anime-orange flex
                          flex-col p-4 rounded-lg">
@@ -87,6 +98,10 @@ function Packages() {
                     </li>
                 ))}
             </ul>
+            {/* Show more button */}
+            <button onClick={() => setShowAll(!showAll)}>
+                {showAll ? 'Show Less' : 'Show More'}
+            </button>
         </section >
     )
 }
