@@ -59,7 +59,8 @@ const packages = [
     }
 ]
 
-function Packages() {
+{/* Packages receives two setters and passes them straight through to PackageCard */ }
+function Packages({ setSelectedPackage, setIsWizardOpen }) {
     const [showAll, setShowAll] = useState(false);
 
     const featuredPackages = packages.filter(pkg => pkg.featured);
@@ -83,6 +84,8 @@ function Packages() {
                             salePrice={pkg.salePrice}
                             availableStock={pkg.availableStock}
                             image={pkg.image}
+                            setSelectedPackage={setSelectedPackage}
+                            setIsWizardOpen={setIsWizardOpen}
                         />
                     </li>
                 ))}
