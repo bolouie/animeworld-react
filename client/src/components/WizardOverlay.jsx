@@ -1,0 +1,24 @@
+import { useState } from 'react'
+
+function WizardOverlay({ selectedPackage, onClose }) {
+    const [currentStep, setCurrentStep] = useState(0)
+    const [shippingRegion, setShippingRegion] = useState(null)
+    const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
+    const [totalPrice, setTotalPrice] = useState(0)
+    return (
+        <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
+
+            <div className="relative max-w-lg w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
+                <p>{selectedPackage}</p>
+
+                <button aria-label="close modal"
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-20 p-2 rounded-full bg-anime-bg/80 border border-white/10 text-anime-peach hover:text-white hover:border-anime-orange/50 transition-colors cursor-pointer"
+                >✕</button>
+            </div>
+        </div>
+    )
+}
+
+export default WizardOverlay
