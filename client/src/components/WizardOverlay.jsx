@@ -11,11 +11,12 @@ function WizardOverlay({ selectedPackage, onClose }) {
         <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
 
             <div className="relative max-w-lg w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
-                <ShippingStep
-                    shippingRegion={shippingRegion}
-                    setShippingRegion={setShippingRegion}
-                    currentStep={setCurrentStep}
-                />
+                {currentStep === 0 &&
+                    <ShippingStep
+                        shippingRegion={shippingRegion}
+                        setShippingRegion={setShippingRegion}
+                        setCurrentStep={setCurrentStep}
+                    />}
 
                 <button aria-label="close modal"
                     onClick={onClose}
