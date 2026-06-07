@@ -10,7 +10,10 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <Packages />
+      <Packages
+        setSelectedPackage={setSelectedPackage}
+        setIsWizardOpen={setIsWizardOpen}
+      />
     </>
 
   )
