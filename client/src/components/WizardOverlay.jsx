@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ShippingStep from './ShippingStep'
 
 function WizardOverlay({ selectedPackage, onClose }) {
     const [currentStep, setCurrentStep] = useState(0)
@@ -10,7 +11,11 @@ function WizardOverlay({ selectedPackage, onClose }) {
         <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
 
             <div className="relative max-w-lg w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
-                <p>{selectedPackage}</p>
+                <ShippingStep
+                    shippingRegion={shippingRegion}
+                    setShippingRegion={setShippingRegion}
+                    currentStep={setCurrentStep}
+                />
 
                 <button aria-label="close modal"
                     onClick={onClose}
