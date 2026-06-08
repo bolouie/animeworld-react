@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const navLinks = [
     { label: 'Home', href: '#home' },
-    { label: 'Packages', href: '#packages' }, ,
+    { label: 'Packages', href: '#packages' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
 ]
@@ -60,7 +60,8 @@ function Navbar() {
                         </li>
                     ))}
                 </ul>
-                <button aria-label="Open order form" className="hidden md:flex bg-anime-peach hover:bg-anime-orange text-anime-darken transition-colors font-bold py-2 px-6 rounded-full">Order Now</button>
+                <a aria-label="Explore Packages" href="#packages"
+                    className="hidden md:flex bg-anime-peach hover:bg-anime-orange text-anime-darken transition-colors font-bold py-2 px-6 rounded-full">Order Now</a>
             </div>
 
             {/* Mobile menu - drops below */}
