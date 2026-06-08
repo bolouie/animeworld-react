@@ -4,9 +4,11 @@ import CustomerStep from './CustomerStep'
 
 function WizardOverlay({ selectedPackage, onClose }) {
     const [currentStep, setCurrentStep] = useState(0)
-    const [shippingRegion, setShippingRegion] = useState(null)
     const [name, setName] = useState('')
-    const [address, setAddress] = useState('')
+    const [region, setRegion] = useState(null)
+    const [shippingAddress, setShippingAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [country, setCountry] = useState('')
     const [totalPrice, setTotalPrice] = useState(0)
     return (
         <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
@@ -14,16 +16,20 @@ function WizardOverlay({ selectedPackage, onClose }) {
             <div className="bg-anime-card rounded-2xl relative max-w-lg w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
                 {currentStep === 0 &&
                     <ShippingStep
-                        shippingRegion={shippingRegion}
-                        setShippingRegion={setShippingRegion}
+                        region={region}
+                        setRegion={setRegion}
                         setCurrentStep={setCurrentStep}
                     />}
                 {currentStep === 1 &&
                     <CustomerStep
                         name={name}
                         setName={setName}
-                        address={address}
-                        setAddress={setAddress}
+                        shippingAddress={shippingAddress}
+                        setShippingAddress={setShippingAddress}
+                        city={city}
+                        setCity={setCity}
+                        country={country}
+                        setCountry={setCountry}
                         setCurrentStep={setCurrentStep}
 
                     />}

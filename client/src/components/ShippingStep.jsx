@@ -1,25 +1,25 @@
-function ShippingStep({ shippingRegion, setShippingRegion, setCurrentStep }) {
+function ShippingStep({ region, setRegion, setCurrentStep }) {
     return (
         <>
             <h2 className="text-anime-peach font-display font-bold tracking-wide">
-                Choose Your Shipping Region
+                Choose Your  Region
             </h2>
             <button
-                onClick={() => { setShippingRegion('NA'); setCurrentStep(1) }}
+                onClick={() => { setRegion('NA'); setCurrentStep(1) }}
 
-                className={`w-full py-3 rounded-xl border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${shippingRegion === 'NA' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20'}`}>
+                className={`w-full py-3 rounded-full border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${region === 'NA' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20 hover:bg-white/60 hover:text-anime-darken'}`}>
                 North America
             </button >
             <button
-                onClick={() => { setShippingRegion('EU'); setCurrentStep(1) }}
+                onClick={() => { setRegion('EU'); setCurrentStep(1) }}
 
-                className={`w-full py-3 rounded-xl border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${shippingRegion === 'EU' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20'}`}>
+                className={`w-full py-3 rounded-full border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${region === 'EU' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20 hover:bg-white/60 hover:text-anime-darken'}`}>
                 Europe
             </button >
             <button
-                onClick={() => { setShippingRegion('AS'); setCurrentStep(1) }}
+                onClick={() => { setRegion('AS'); setCurrentStep(1) }}
 
-                className={`w-full py-3 rounded-xl border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${shippingRegion === 'AS' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20'}`}>
+                className={`w-full py-3 rounded-full border font-display text-sm font-bold tracking-widest uppercase cursor-pointer transition-colors ${region === 'AS' ? 'bg-anime-orange text-anime-darken border-anime-orange' : 'bg-transparent text-anime-peach border-white/20 hover:bg-white/60 hover:text-anime-darken'}`}>
                 Asia/Pacific
             </button >
         </>
@@ -27,3 +27,5 @@ function ShippingStep({ shippingRegion, setShippingRegion, setCurrentStep }) {
 }
 
 export default ShippingStep
+
+
