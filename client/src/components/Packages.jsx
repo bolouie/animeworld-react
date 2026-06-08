@@ -78,6 +78,7 @@ function Packages({ setSelectedPackage, setIsWizardOpen }) {
                 {displayPackages.map(pkg => (
                     <li key={pkg.id}>
                         <PackageCard
+                            id={pkg.id}
                             name={pkg.name}
                             description={pkg.description}
                             regularPrice={pkg.regularPrice}

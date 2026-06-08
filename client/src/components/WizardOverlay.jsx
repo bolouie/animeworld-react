@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ShippingStep from './ShippingStep'
 import CustomerStep from './CustomerStep'
+import ConfirmStep from './ConfirmStep'
 
 function WizardOverlay({ selectedPackage, onClose }) {
     const [currentStep, setCurrentStep] = useState(0)
@@ -9,7 +10,7 @@ function WizardOverlay({ selectedPackage, onClose }) {
     const [shippingAddress, setShippingAddress] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
-    const [totalPrice, setTotalPrice] = useState(0)
+    const [totalCost, setTotalCost] = useState(0)
     return (
         <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
             {/* modal panel */}
@@ -32,6 +33,18 @@ function WizardOverlay({ selectedPackage, onClose }) {
                         setCountry={setCountry}
                         setCurrentStep={setCurrentStep}
 
+                    />}
+                {currentStep === 2 &&
+                    <ConfirmStep
+                        selectedPackage={selectedPackage}
+                        name={name}
+                        region={region}
+                        shippingAddress={shippingAddress}
+                        city={city}
+                        country={country}
+                        totalCost={totalCost}
+                        setTotalCost={setTotalCost}
+                        onClose={onClose}
                     />}
 
                 <button aria-label="close modal"

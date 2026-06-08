@@ -1,4 +1,4 @@
-function PackageCard({ name, description, regularPrice, salePrice, availableStock, image, setSelectedPackage, setIsWizardOpen }) {
+function PackageCard({ id, name, description, regularPrice, salePrice, availableStock, image, setSelectedPackage, setIsWizardOpen }) {
     return (
 
         <article className="h-full outline outline-1 outline-anime-orange flex
@@ -18,7 +18,7 @@ function PackageCard({ name, description, regularPrice, salePrice, availableStoc
             <p className="text-center text-sm font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 mb-2 mx-25 rounded border border-emerald-500/10" >{availableStock} available</p>
 
             <button
-                onClick={() => { setSelectedPackage(name); setIsWizardOpen(true) }}
+                onClick={() => { setSelectedPackage({ id, name }); setIsWizardOpen(true) }}
                 aria-label={`View details for ${name}`}
                 className="w-full py-3 bg-anime-orange hover:bg-anime-orange/90 active:bg-orange-600 rounded-full text-xs font-semibold text-white tracking-widest uppercase transition-all duration-200 flex items-center justify-center shadow-lg hover:scale-[1.01] cursor-pointer mt-auto">
                 View Details
