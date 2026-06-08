@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://bls@localhost/AnimeWorld-Spring2026'
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 db = SQLAlchemy(app)
 
 
