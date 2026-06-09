@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const navLinks = [
     { label: 'Home', href: '#home' },
@@ -8,7 +8,31 @@ const navLinks = [
 ]
 
 function Navbar() {
+    // state
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState('#home')
+
+    // side effects
+    useEffect(() => {
+        // 1. Create an observer that watches for sections entering the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection('#' + entry.target.id)
+                }
+            })
+        }, { threshold: 0.4 })
+
+        // 2. Tell it which elements to watch
+        const sections = document.querySelectorAll('section[id]')
+        sections.forEach((section) => observer.observe(section))
+
+        // 3. Cleanup - stop watching when Navbar unmounts
+        return () => observer.disconnect()
+
+    }, []) // empty array, runs once on mount
+
+    // render
     return (
 
         <nav className="fixed top-0 left-0 right-0 z-50 bg-anime-darken/90 backdrop-blur-sm" aria-label="Main navigation" >
@@ -54,7 +78,13 @@ function Navbar() {
                     {   /* Desktop links always visible */}
                     {navLinks.map((link) => (
                         <li key={link.href}>
-                            <a href={link.href} className="text-anime-peach hover:text-anime-orange transition-colors">
+                            <a
+                                href={link.href}
+                                className={`transition-colors duration-200 ${activeSection === link.href
+                                    ? 'text-anime-orange'
+                                    : 'text-anime-peach hover:text-anime-orange'
+                                    } `}
+                            >
                                 {link.label}
                             </a>
                         </li>
@@ -69,7 +99,13 @@ function Navbar() {
                 <ul className="flex flex-col items-center px-6 pb-4 gap-4 md:hidden">
                     {navLinks.map((link) => (
                         <li key={link.href}>
-                            <a href={link.href} className="text-anime-peach hover:text-anime-orange transition-colors">
+                            <a
+                                href={link.href}
+                                className={`transition-colors duration-200 ${activeSection === link.href
+                                    ? 'text-anime-orange'
+                                    : 'text-anime-peach hover:text-anime-orange'
+                                    }`}
+                            >
                                 {link.label}
                             </a>
                         </li>
