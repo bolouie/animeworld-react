@@ -31,6 +31,12 @@ class Order (db.Model):
     productOrdered = db.Column(db.Integer(), db.ForeignKey('Products.id'))
     totalCost = db.Column(db.Float())
 
+class Notify (db.Model):
+    __tablename__ = 'Notify'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    email = db.Column(db.String(200))
+
 # http://localhost:5000/health
 @app.route('/health')
 def health():
@@ -74,6 +80,15 @@ def create_order():
     
     # 7. return totalCost as JSON
     return jsonify({'totalCost':totalCost})
+
+# http://localhost:5000/notify
+@app.route('/notify', methods=['POST'])
+def notify():
+    data = request.get_json()
+    new_notify = Notify(email=data['email'])
+    db.session.add(new_notify)
+    db.session.commit()
+    return jsonify({ "message" : "success" })
 
 if __name__ == '__main__':
     app.run(debug=True)
