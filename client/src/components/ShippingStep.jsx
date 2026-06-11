@@ -1,7 +1,7 @@
 function ShippingStep({ region, setRegion, setCurrentStep }) {
     return (
         <>
-            <h2 className="text-anime-peach font-display font-bold tracking-wide">
+            <h2 className="text-anime-peach text-lg font-display font-bold tracking-wide">
                 Choose Your  Region
             </h2>
             <button

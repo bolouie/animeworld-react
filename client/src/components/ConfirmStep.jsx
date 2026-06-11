@@ -59,7 +59,7 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
     if (orderPlaced) {
         return (
             <>
-                <h2 className="text-anime-peach font-display font-bold tracking-wide">
+                <h2 className="text-anime-peach text-lg font-display font-bold tracking-wide">
                     Congrats! 🎊 Order Confirmed
                 </h2>
                 <dl>
@@ -85,7 +85,7 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
     // State A: React-calculated total.
     return (
         <>
-            <h2 className="text-anime-peach font-display font-bold tracking-wide">
+            <h2 className="text-anime-peach text-lg font-display font-bold tracking-wide">
                 Your Order Details
             </h2>
             {/* display order summary as a description list */}
@@ -114,6 +114,7 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
                     <dt className="text-white/50">Country: </dt>
                     <dd className="text-anime-peach">{country}</dd>
                 </div>
+                <hr className="border-white/10 my-2" />
                 <div className="flex gap-2">
                     <dt className="text-white/50">Package Cost: </dt>
                     <dd className="text-anime-peach">${packageCost}</dd>
@@ -123,14 +124,14 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
                     <dd className="text-anime-peach">${shippingCost}</dd>
                 </div>
                 <div className="flex gap-2">
-                    <dt className="text-white/50">Total Cost: </dt>
-                    <dd className="text-anime-peach">${previewTotal}</dd>
+                    <dt className="text-white/70 font-semibold">Total Cost: </dt>
+                    <dd className="text-anime-orange font-bold text-lg">${previewTotal}</dd>
                 </div>
             </dl>
             <button
                 aria-label="Place Order"
                 onClick={handlePlaceOrder}
-                className="bg-transparent border border-anime-peach py-2 px-4 hover:bg-anime-orange hover:text-anime-darken text-white font-semibold rounded-full cursor-pointer"
+                className="bg-transparent border border-anime-peach mt-6 py-2 px-4 hover:bg-anime-orange hover:text-anime-darken text-white font-semibold rounded-full cursor-pointer"
             >Place Order
             </button>
         </>
