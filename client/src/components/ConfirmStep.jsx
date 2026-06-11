@@ -1,4 +1,28 @@
-function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, country, setTotalCost, onClose }) {
+import { useState } from 'react'
+
+function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, country, totalCost, setTotalCost, onClose }) {
+
+    // 1a. State declaration
+    const [orderPlaced, setOrderPlaced] = useState(false)
+
+    // 1b. Pricing lookups and derived values
+    const packagePrices = {
+        1: 18,
+        2: 28,
+        3: 45,
+        4: 60,
+        5: 22
+    }
+
+    const shippingPrices = {
+        NA: 7,
+        EU: 14,
+        AS: 10
+    }
+
+    const packageCost = packagePrices[selectedPackage.id]
+    const shippingCost = shippingPrices[region]
+    const previewTotal = packageCost + shippingCost
 
     // 2. Event handler - lives inside the component
     async function handlePlaceOrder() {
@@ -24,13 +48,41 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
             //  Await the response, then parse it as JSON
             const result = await response.json();
             setTotalCost(result.totalCost)
-            onClose(); // only closes if request succeeded 
+            setOrderPlaced(true)
             console.log(result)
         } catch (error) {
             console.error(error.message)
         }
     }
 
+    // State B: if orderPlaced is true, render a confirmation message, the Flask total, and a close button calls onClose().
+    if (orderPlaced) {
+        return (
+            <>
+                <h2 className="text-anime-peach font-display font-bold tracking-wide">
+                    Congrats! 🎊 Order Confirmed
+                </h2>
+                <dl>
+                    <div className="flex gap-2">
+                        <dt className="text-white/50">You ordered: </dt>
+                        <dd className="text-anime-peach">{selectedPackage.name}</dd>
+                    </div>
+                    <div className="flex gap-2">
+                        <dt className="text-white/50">Total: </dt>
+                        <dd className="text-anime-peach">${totalCost}</dd>
+                    </div>
+                </dl>
+                <button
+                    aria-label="Back to AnimeWorld"
+                    onClick={onClose}
+                    className="bg-transparent border border-anime-peach py-2 px-4 hover:bg-anime-orange hover:text-anime-darken text-white font-semibold rounded-full cursor-pointer"
+                >Back to AnimeWorld
+                </button>
+            </>
+        )
+    }
+
+    // State A: React-calculated total.
     return (
         <>
             <h2 className="text-anime-peach font-display font-bold tracking-wide">
@@ -61,6 +113,18 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
                 <div className="flex gap-2">
                     <dt className="text-white/50">Country: </dt>
                     <dd className="text-anime-peach">{country}</dd>
+                </div>
+                <div className="flex gap-2">
+                    <dt className="text-white/50">Package Cost: </dt>
+                    <dd className="text-anime-peach">${packageCost}</dd>
+                </div>
+                <div className="flex gap-2">
+                    <dt className="text-white/50">Shipping Cost: </dt>
+                    <dd className="text-anime-peach">${shippingCost}</dd>
+                </div>
+                <div className="flex gap-2">
+                    <dt className="text-white/50">Total Cost: </dt>
+                    <dd className="text-anime-peach">${previewTotal}</dd>
                 </div>
             </dl>
             <button
