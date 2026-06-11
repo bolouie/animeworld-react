@@ -12,7 +12,7 @@ function WizardOverlay({ selectedPackage, onClose }) {
     const [country, setCountry] = useState('')
     const [totalCost, setTotalCost] = useState(0)
     return (
-        <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-10">
+        <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-50">
             {/* modal panel */}
             <div className="bg-anime-card rounded-2xl relative max-w-lg w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
                 {currentStep === 0 &&
