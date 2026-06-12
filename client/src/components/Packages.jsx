@@ -5,6 +5,7 @@ import packageImageDeluxe from '../assets/deluxeEdition.png';
 import packageImageAnniversary from '../assets/anniversaryBox.png';
 import packageImageMystery from '../assets/mysteryPack.png';
 import PackageCard from './PackageCard';
+import ComingSoonCard from './ComingSoonCard'
 
 const packages = [
     {
@@ -90,6 +91,11 @@ function Packages({ setSelectedPackage, setIsWizardOpen }) {
                         />
                     </li>
                 ))}
+                {showAll && (
+                    <li>
+                        <ComingSoonCard />
+                    </li>
+                )}
             </ul>
             {/* Show more button */}
             <button className="mt-4 px-4 py-2 border border-anime-peach/20 hover:border-anime-gold/40 hover:bg-anime-card/75 text-anime-peach hover:text-white rounded-full text-sm transition-all duration-200 flex items-center cursor-pointer"
