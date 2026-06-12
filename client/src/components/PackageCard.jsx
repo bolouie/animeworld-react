@@ -19,7 +19,7 @@ function PackageCard({ id, name, description, regularPrice, salePrice, available
             <button
                 onClick={() => { setSelectedPackage({ id, name }); setIsWizardOpen(true) }}
                 aria-label={`View details for ${name}`}
-                className="w-full py-3 bg-anime-orange rounded-full text-xs font-semibold text-white tracking-widest uppercase transition-all duration-200 flex items-center justify-center shadow-lg cursor-pointer mt-auto [box-shadow:3px_3px_0px_#511D38] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_0px_#FF793D]">
+                className="w-full mt-[12px] py-3 bg-anime-orange rounded-full text-xs font-semibold text-white tracking-widest uppercase transition-all duration-200 flex items-center justify-center shadow-lg cursor-pointer [box-shadow:3px_3px_0px_#511D38] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_0px_#FF793D]">
                 View Details
             </button>
         </article>

@@ -54,7 +54,10 @@ function ComingSoonCard() {
 
             {/* Image slot — all decorative */}
             <div className="relative w-full border-2 border-dashed border-anime-orange/50 rounded-sm bg-[#32204A]/30 min-h-[240px] overflow-hidden"
-
+                style={{
+                    backgroundImage: 'linear-gradient(rgba(255,140,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,140,0,0.05) 1px, transparent 1px)',
+                    backgroundSize: '20px 20px',
+                }}
                 aria-hidden="true">
                 <div className="absolute top-1 left-2 text-xs text-anime-orange/70">W_GRID: 380x300</div>   {/* corner stamp TL */}
                 <div className="absolute top-1 right-2 text-xs text-anime-orange/70">SYS_REF: #PKG_06</div>  {/* corner stamp TR */}
