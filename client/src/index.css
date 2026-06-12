@@ -14,10 +14,24 @@
     --color-shield-red: #511D38;
 
     --font-display: "Space Grotesk", sans-serif;
+
+    --animate-radar-ping: radar-ping 2s ease-out infinite;
 }
 
 body {
     background-color: var(--color-anime-bg);
     color: var(--color-anime-peach);
     font-family: var(--font-display);
+}
+
+@keyframes radar-ping {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.8);
+    }
 }

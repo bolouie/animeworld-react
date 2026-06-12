@@ -6,6 +6,7 @@ function ComingSoonCard() {
     const [submitted, setSubmitted] = useState(false)
 
     async function handleNotify() {
+        if (!email) return
         const url = "http://localhost:5000/notify"
 
         try {
@@ -32,8 +33,11 @@ function ComingSoonCard() {
     // Early submit: If submitted is true, confirm!
     if (submitted) {
         return (
-            <article className="h-full border-2 border-dashed border-white/20 flex flex-col p-6 rounded-lg bg-white/5 items-center justify-center text-center gap-4 min-h-[400px]">
-
+            <article className="h-full border-2 border-dashed border-anime-orange/60 shadow-lg shadow-anime-orange/20 flex flex-col p-6 rounded-lg bg-white/5 items-center justify-center text-center gap-4 min-h-[400px]"
+            >
+                <svg className="text-anime-orange w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                </svg>
                 <h2 className="text-anime-peach text-lg font-display font-bold tracking-wide">
                     You're on the list! 🎉
                 </h2>
@@ -49,11 +53,12 @@ function ComingSoonCard() {
         <article className="h-full border-2 border-dashed border-white/20 flex flex-col p-6 rounded-lg bg-white/5 items-center justify-center text-center gap-4 min-h-[400px] outline-anime-orange/50 hover:outline-anime-orange hover:outline-2 shadow-md hover:shadow-lg hover:shadow-anime-orange/30 transition-all duration-200 flex">
 
             {/* Image slot — all decorative */}
-            <div className="relative w-full border-2 border-dashed border-anime-orange/50 rounded-sm bg-[#32204A]/30 min-h-[240px]"
+            <div className="relative w-full border-2 border-dashed border-anime-orange/50 rounded-sm bg-[#32204A]/30 min-h-[240px] overflow-hidden"
+
                 aria-hidden="true">
                 <div className="absolute top-1 left-2 text-xs text-anime-orange/70">W_GRID: 380x300</div>   {/* corner stamp TL */}
                 <div className="absolute top-1 right-2 text-xs text-anime-orange/70">SYS_REF: #PKG_06</div>  {/* corner stamp TR */}
-                <div>     {/* rings wrapper covered by parent div aria-hidden*/}
+                <div className="animate-radar-ping absolute inset-0">     {/* rings wrapper covered by parent div aria-hidden*/}
                     <span style={{ animationDelay: '0s' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-anime-orange/40 size-16"></span>
 
                     <span style={{ animationDelay: '1.05s' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-anime-orange/40 size-32"></span>
@@ -93,5 +98,3 @@ function ComingSoonCard() {
 }
 
 export default ComingSoonCard
-
-{/* transition-all duration-200 flex items-center justify-center shadow-lg cursor-pointer mt-auto active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_0px_#FF793D]" > */ }
