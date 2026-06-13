@@ -1,10 +1,22 @@
+# 1. Standard library
+import os
+
+# 2. Third-party libraries
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
-
 from flask_sqlalchemy import SQLAlchemy
-
 from flask_cors import CORS
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+# 3. Load environment variables before anything reads from os.environ
+load_dotenv()
 
 
+# 4. Read config values for SendGrid API
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+
+# 5. App initialization
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://bls@localhost/AnimeWorld-Spring2026'
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
@@ -85,9 +97,25 @@ def create_order():
 @app.route('/notify', methods=['POST'])
 def notify():
     data = request.get_json()
+
+    # 1. Write to DB, always happens
     new_notify = Notify(email=data['email'])
     db.session.add(new_notify)
     db.session.commit()
+
+    # 2. Send confirmation email via SendGrid, best effort try-catch
+    try:
+        message = Mail(
+            from_email='bo.siu@torontomu.ca',
+            to_emails=data['email'],
+            subject="You're on the AnimeWorld list! 🎌",
+            html_content="<p>Thanks for signing up! We'll notify you when new packages drop.</p>"
+        )
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        sg.send(message)
+    except Exception as e:
+        print(f"SendGrid error: {e}")
+
     return jsonify({ "message" : "success" })
 
 if __name__ == '__main__':
