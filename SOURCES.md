@@ -91,11 +91,17 @@ Used as a visual reference when defining the project's design tokens in `index.c
 
 **SuperSimpleDev — React Tutorial Full Course: Beginner to Pro (React 19, 2025)**
 https://youtu.be/TtPXvEcE11E?si=ZzmEKRqOw53B5ckZ
-Watched approximately 11 hours 30 minutes at 1.25–1.50× speed. Primary resource for building React fundamentals from scratch alongside this project.
+Watched in full (~11.5 hours) at 1.25–1.50× speed.
 
-**Understanding React — Jack Herrington (dontimitate.dev)**
+This course rebuilds, in React, the same e-commerce project SuperSimpleDev teaches in his vanilla JavaScript "Amazon clone" course — which I had separately followed in full (~20 hours, completed roughly a year prior to this project). That earlier vanilla JS build was never published to GitHub, as its close visual resemblance to Amazon's UI raised trademark concerns. The React version solves this by rebranding the UI (different colour scheme, layout, and styling) while teaching the same underlying product directory, cart, and order-flow logic — now implemented with React state and component patterns instead of direct DOM manipulation.
+
+Having already built the cart/order/product-directory logic once in vanilla JS made the React version's concepts transfer quickly: the value of React (declarative rendering, component reuse, state-driven UI, and a clear seam for attaching a backend) was immediately legible against that prior experience. This course is also the primary reference for AnimeWorld's v2 roadmap — multi-product cart functionality and support for multiple concurrent orders.
+
+**Understanding React — Tony Alicea (dontimitate.dev)**
 https://dontimitate.dev/courses/react/
-Approximately 40% completed. Supplementary resource for deepening React understanding beyond syntax.
+Approximately 50% complete. Modules covered: React app setup and source code, DOM and declarative programming, React Elements, JSX, Fiber and Reconciliation, Execution Context and pausing work, React DOM and rendering, Events, State, Hooks (State and Reducers), useEffect, and `use()` / fetching data (React 19+).
+
+This course goes underneath the syntax covered by SuperSimpleDev's tutorial, into how React actually works internally — Fiber, reconciliation, and execution context in particular reframed how I reason about re-renders and state updates while building AnimeWorld's components.
 
 ---
 
