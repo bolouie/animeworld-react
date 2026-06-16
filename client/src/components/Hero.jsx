@@ -14,7 +14,7 @@ function Hero() {
             <div className="z-10 text-center px-4 max-w-4xl">
                 <p className="animate-pulse inline-flex items-center gap-2 m-6 px-3 py-1 bg-anime-orange/15 border border-anime-orange/70 rounded-full text-anime-orange text-xs font-semibold uppercase tracking-wider">✨ Summer Release ✨ </p>
                 <h1>
-                    <span className="text-white text-6xl font-bold block">Experience the Art of Anime</span>
+                    <span className="text-white text-4xl md:text-5xl lg:text-6xl font-bold block">Experience the Art of Anime</span>
                 </h1>
                 <p className="text-anime-orange text-xl mt-3">
                     Immerse yourself in a world where every story leaves a mark
