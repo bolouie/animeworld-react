@@ -13,7 +13,7 @@ function Contact() {
             {/* Content - centered, above the overlay */}
             <div className="z-10 text-center px-4 max-w-4xl">
                 <p className="animate-pulse inline-flex items-center gap-2 m-6 px-3 py-1 bg-anime-orange/15 border border-anime-orange/70 rounded-full text-anime-orange text-xs font-semibold uppercase tracking-wider">✨ Summer Hours ✨ </p>
-                <h1 className="text-white text-6xl font-bold block">
+                <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold block">
                     Visit Us!
                 </h1>
                 <address>
