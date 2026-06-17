@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { notifySignup } from '../utils/notifySignup'
 
 function ComingSoonCard() {
 
@@ -7,22 +8,9 @@ function ComingSoonCard() {
 
     async function handleNotify() {
         if (!email) return
-        const url = "http://localhost:5000/notify"
 
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: email
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`)
-            }
-            // Await the response, then parse it as JSON
-            const result = await response.json();
+            const result = await notifySignup(email)
             setSubmitted(true)
             console.log(result)
         } catch (error) {

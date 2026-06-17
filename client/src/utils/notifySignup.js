@@ -1,20 +1,17 @@
 import { isDemoMode } from './demoMode'
 
-export async function placeOrder(orderData, previewTotal) {
+export async function notifySignup(email) {
     if (isDemoMode()) {
         await new Promise(resolve => setTimeout(resolve, 600))
 
-        // fabricated demo branch
-        return {
-            totalCost: previewTotal,
-            orderId: `DEMO-${Math.floor(Math.random() * 900) + 100}`
-        }
+        // fabricated demo nothing to construct
+        return {}
     }
 
-    const response = await fetch('http://localhost:5000/order', {
+    const response = await fetch('http://localhost:5000/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData),
+        body: JSON.stringify({ email })
     })
 
     if (!response.ok) {
@@ -23,3 +20,5 @@ export async function placeOrder(orderData, previewTotal) {
 
     return response.json()
 }
+
+
