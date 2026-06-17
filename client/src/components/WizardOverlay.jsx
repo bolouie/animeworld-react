@@ -10,7 +10,6 @@ function WizardOverlay({ selectedPackage, onClose }) {
     const [shippingAddress, setShippingAddress] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
-    const [totalCost, setTotalCost] = useState(0)
     return (
         <div className="flex items-center justify-center bg-anime-darken/95 h-screen w-screen fixed inset-0 z-50">
             {/* modal panel */}
@@ -42,8 +41,6 @@ function WizardOverlay({ selectedPackage, onClose }) {
                         shippingAddress={shippingAddress}
                         city={city}
                         country={country}
-                        totalCost={totalCost}
-                        setTotalCost={setTotalCost}
                         onClose={onClose}
                     />}
 

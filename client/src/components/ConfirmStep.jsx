@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, country, totalCost, setTotalCost, onClose }) {
+function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, country, onClose }) {
 
     // 1a. State declaration
     const [orderPlaced, setOrderPlaced] = useState(false)
+    const [totalCost, setTotalCost] = useState(0)
 
     // 1b. Pricing lookups and derived values
     const packagePrices = {
