@@ -91,7 +91,10 @@ def create_order():
     db.session.commit()
     
     # 7. return totalCost as JSON
-    return jsonify({'totalCost':totalCost})
+    return jsonify({
+        'totalCost':totalCost,
+        'orderId': newOrder.id,
+        })
 
 # http://localhost:5000/notify
 @app.route('/notify', methods=['POST'])
