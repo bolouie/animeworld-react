@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { notifySignup } from '../utils/notifySignup'
+import { isDemoMode } from '../utils/demoMode'
 
 function ComingSoonCard() {
 
@@ -30,7 +31,7 @@ function ComingSoonCard() {
                     You're on the list! 🎉
                 </h2>
                 <p className="text-white/60 text-sm">
-                    We'll notify {email} when new packages drop.
+                    {isDemoMode() ? `[SIM] ${email} flagged — no data written.` : `We'll notify ${email} when new packages drop.`}
                 </p>
             </article>
         )
@@ -61,6 +62,10 @@ function ComingSoonCard() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-anime-orange">?</div> {/* sigil covered by parent div aria-hidden */}
                 <p className="absolute top-[60%] left-1/2 -translate-x-1/2 text-xs text-anime-orange/70 font-mono tracking-widest text-center w-full px-2"
                 >MATERIALIZING...</p>        {/* meaningful status */}
+                {isDemoMode() && (
+                    <p className="absolute top-[72%] left-1/2 -translate-x-1/2 text-xs text-anime-orange/70 font-mono tracking-widest text-center w-full px-2">SIM_MODE: ACTIVE</p>
+                )}
+
                 <div className="absolute bottom-1 left-2 text-xs text-anime-orange/70">DIM: -- × -- × -- cm</div> {/* corner stamp BL */}
                 <div className="absolute bottom-1 right-2 text-xs text-anime-orange/70">SEC: No. --- / ---</div>    {/* corner stamp BR */}
             </div>
@@ -74,7 +79,7 @@ function ComingSoonCard() {
                 id="email"
                 type="email"
                 value={email}
-                placeholder="type your email"
+                placeholder="Your email is not collected"
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-white/10 rounded-lg px-4 py-2 text-anime-peach border border-white/10 focus:outline-none focus:border-anime-orange" />
 
