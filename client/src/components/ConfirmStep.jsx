@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { placeOrder } from '../utils/placeOrder'
 
 function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, country, onClose }) {
 
     // 1a. State declaration
     const [orderPlaced, setOrderPlaced] = useState(false)
     const [totalCost, setTotalCost] = useState(0)
+    const [orderId, setOrderId] = useState(null)
 
     // 1b. Pricing lookups and derived values
     const packagePrices = {
@@ -28,27 +30,18 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
     // 2. Event handler - lives inside the component
     async function handlePlaceOrder() {
         // fetch logic 
-        const url = "http://localhost:5000/order";
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    productOrdered: selectedPackage.id,
-                    name: name,
-                    region: region,
-                    shippingAddress: shippingAddress,
-                    city: city,
-                    country: country,
-                })
-            });
+            const result = await placeOrder({
+                productOrdered: selectedPackage.id,
+                name: name,
+                region: region,
+                shippingAddress: shippingAddress,
+                city: city,
+                country: country,
+            }, previewTotal)
 
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`)
-            }
-            //  Await the response, then parse it as JSON
-            const result = await response.json();
             setTotalCost(result.totalCost)
+            setOrderId(result.orderId)
             setOrderPlaced(true)
             console.log(result)
         } catch (error) {
@@ -67,6 +60,10 @@ function ConfirmStep({ selectedPackage, name, region, shippingAddress, city, cou
                     <div className="flex gap-2">
                         <dt className="text-white/50">You ordered: </dt>
                         <dd className="text-anime-peach">{selectedPackage.name}</dd>
+                    </div>
+                    <div className="flex gap-2">
+                        <dt className="text-white/50">Order: </dt>
+                        <dd className="text-anime-peach">#{orderId}</dd>
                     </div>
                     <div className="flex gap-2">
                         <dt className="text-white/50">Total: </dt>
