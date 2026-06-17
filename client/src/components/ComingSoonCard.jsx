@@ -38,7 +38,7 @@ function ComingSoonCard() {
 
     // 
     return (
-        <article className="h-full border-2 border-dashed border-white/20 flex flex-col p-6 rounded-lg bg-white/5 items-center justify-center text-center gap-4 min-h-[400px] outline-anime-orange/50 hover:outline-anime-orange hover:outline-2 shadow-md hover:shadow-lg hover:shadow-anime-orange/30 transition-all duration-200 flex">
+        <article className="h-full border-2 border-dashed border-white/20 flex flex-col p-6 rounded-lg bg-white/5 items-center justify-center text-center gap-4 min-h-[400px] outline-anime-orange/50 hover:outline-anime-orange hover:outline-2 shadow-md hover:shadow-lg hover:shadow-anime-orange/30 transition-all duration-200">
 
             {/* Image slot — all decorative */}
             <div className="relative w-full border-2 border-dashed border-anime-orange/50 rounded-sm bg-[#32204A]/30 min-h-[240px] overflow-hidden"
@@ -81,7 +81,7 @@ function ComingSoonCard() {
             <button
                 aria-label="Submit Email"
                 onClick={handleNotify}
-                className="w-full py-3 bg-transparent border border-anime-peach rounded-full text-xs font-semibold text-white tracking-widest uppercase transition-all duration- 200 flex items-center justify-center shadow-lg mt-auto [box-shadow:3px_3px_0px_#16101C] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_0px_#16101C] cursor-pointer"
+                className="w-full py-3 bg-transparent border border-anime-peach rounded-full text-xs font-semibold text-white tracking-widest uppercase transition-all duration-200 flex items-center justify-center shadow-lg mt-auto [box-shadow:3px_3px_0px_#16101C] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_0px_#16101C] cursor-pointer"
             >Submit Email
             </button>
         </article>
